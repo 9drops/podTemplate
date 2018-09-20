@@ -16,6 +16,13 @@
 
 * clean.list   - 需要清除的pod清单
 
+# 使用此模版创建自己的pod
+1. 用create_pod.sh脚本创建自己的podname
+2. 拷贝podTemplate/下所有shell脚本到podname目录下，将podTemplate.podspec重命名为podname.podspec
+3. 修改podname.podspec满足实际需求
+4. 将用于创建pod的源码、资源文件分别放到podname/Classes和podname/Assets下, 生成的framework路径设定为podname/Products
+5. 执行pod_lib_lint.sh脚本，如果成功，执行pod_repo_push.sh脚本,失败则解决问题。
+6. 执行build_framework.sh脚本，如果成功，执行pod_repo_push.sh和pod_repo_push.sh，否则检查git repository上源文件或依赖的私有pod是否和本地一致，可用的操作有清除自己和依赖pod的本地缓存。
 
 
 # podTemplate

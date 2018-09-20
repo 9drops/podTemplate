@@ -1,0 +1,16 @@
+PODS:
+  - podTemplate (0.1.0)
+
+DEPENDENCIES:
+  - podTemplate (from `../`)
+
+EXTERNAL SOURCES:
+  podTemplate:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  podTemplate: 8d53295a759236d312f465fb58c188b95486225b
+
+PODFILE CHECKSUM: 17ee6ae196e8dbf29b73da8742098608fcdcd739
+
+COCOAPODS: 1.2.1

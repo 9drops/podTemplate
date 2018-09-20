@@ -1,42 +1,36 @@
-#
-# Be sure to run `pod lib lint podTemplate.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'podTemplate'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of podTemplate.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/9drops/podTemplate'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '9drops' => 'zhanbz@gmail.com' }
-  s.source           = { :git => 'https://github.com/9drops/podTemplate.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'podTemplate/Classes/**/*'
+  s.name         = "podTemplate"
+  s.version      = "1.0.0"
+  s.summary      = "Log tools, for term print and local file log or remote log"
+  s.description  = <<-DESC
+                    Log tools, for term print and local file log or remote log. Encapsulate from CocoaLumberjack
+                   DESC
+  s.homepage     = "http://www.icodingprogram.com"
+  s.license = { :type => 'MIT', :text => <<-LICENSE
+            Copyright up366 2018-2020
+                       LICENSE
+                              }
+  s.author       = { "9drops" => "zhanbz@gmail.com" }
+  s.source       = { :git => "http://192.168.0.34/iOSGroup/#{s.name}.git", :tag => "#{s.version}" }
+  s.platform     = :ios, "8.0"
+  s.requires_arc = true
   
-  # s.resource_bundles = {
-  #   'podTemplate' => ['podTemplate/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.resource_bundles = {
+      "#{s.name}" => ["#{s.name}/Assets/*.{png,xib,plist}"]
+  }
+  
+  #s.module_map   = "#{s.name}/Classes/CommonCrypto/module.modulemap" 
+  #如果自己已经打包好bundle
+  #s.resources = "#{s.name}/Assets/*.bundle"
+  s.dependency "CocoaLumberjack", "~> 2.0.0"
+  
+  if ENV["#{s.name}_lib"] || ENV["all_lib"]
+    s.source_files = "#{s.name}/Classes/#{s.name}.h" , "#{s.name}/Classes/**/*.h"
+    s.vendored_frameworks = "#{s.name}/Products/#{s.name}.framework"
+    s.prepare_command = "/bin/sh  build_framework.sh #{s.name}"
+  else
+    s.source_files = "#{s.name}/Classes/*.{m,h,c}", "#{s.name}/Classes/**/*.{m,h,c}", "#{s.name}/Classes/**/**/*.{m,h,c}"
+    s.public_header_files = "#{s.name}/Classes/#{s.name}.h", "#{s.name}/Classes/**/*.h"
+  end
+  
 end

@@ -13,7 +13,7 @@ pod repo add privatePods git@github.com:9drops/privatePods.git
 
 * pod_repo_push.sh    - 封装pod repo push命令，推送本地podspec到repo版本库，此脚本使用git repository上对应tag版本源码编译目标文件
 
-* push_to_master.sh   - 推送*.podspec中version的值（git tag版本）git repository，此脚本有一个必选参数message:git 提交消息
+* push_to_git.sh   - 推送*.podspec中version的值（git tag版本）git repository，此脚本有一个必选参数message:git 提交消息
 
 * create_pod.sh - 一键创建包含测试项目的pod,脚本自带输入pod lib create对话选项，可修改定制
 

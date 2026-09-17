@@ -9,7 +9,7 @@ podsource="$pod_source_prefix"
 podname="$pod_name"
 message="${1:-Update Repository}"
 
-function push_to_git_master() {
+function push_to_git() {
     local branch
     branch=$(git rev-parse --abbrev-ref HEAD)
 
@@ -39,4 +39,4 @@ function push_to_git_master() {
     git push origin "$branch"
 }
 
-push_to_git_master
+push_to_git

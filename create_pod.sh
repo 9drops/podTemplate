@@ -18,10 +18,7 @@ podname=$1
 puts "podname:$podname"
 
 set timeout -1
-spawn pod lib create $podname
-
-expect email
-send "zhanbz@gmail.com\r"
+spawn pod lib create $podname --template-url=https://github.com/9drops/podTemplate.git
 
 expect platform
 send "iOS\r"
@@ -39,7 +36,7 @@ expect "view based testing"
 send "No\r"
 
 expect prefix
-send "ZBZ\r"
+send "RT\r"
 
 interact
 

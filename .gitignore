@@ -20,7 +20,7 @@ DerivedData
 *.ipa
 Example/Pods/
 Example/Podfile.lock
-Example/ScoringEngineWrapper.xcworkspace/
+Example/*.xcworkspace/
 
 # Bundler
 .bundle
